@@ -1,0 +1,146 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import { Icon } from "astro-icon/components";
+
+const meta = {
+	description:
+		"Explore Shreyas Devaraj's projects in AI/ML, Software Engineering, and Web Development",
+	title: "Projects",
+};
+
+const projects = [
+	{
+		title: "Eventflow.ai – Agentic Application",
+		description:
+			"An innovative agentic assistant that integrates multiple LLMs (ChatGPT, Llama, Gemini) to automate task generation through multi-agent reasoning. Winner of $3500 prize at VenturePack Challenge.",
+		techStack: ["LangGraph", "Langchain", "Python", "FastAPI", "TypeScript", "CopilotKit"],
+		githubUrl: "https://github.com/nirmaljoji/EventFlow.AI",
+		highlights: [
+			"Multi-agent reasoning with LLMs",
+			"Full-stack architecture with FastAPI and TypeScript",
+			"Interactive chat with dynamic event understanding",
+			"Won $3500 at VenturePack Challenge",
+		],
+	},
+	{
+		title: "d-shop Assistant",
+		description:
+			"A Generative AI assistant for SAP d-shop internal wiki and support tooling using LLMs and RAG techniques. Integrated with Teams, GitHub, and Outlook to streamline workflows.",
+		techStack: ["Python", "GPT", "Langchain", "Graph API"],
+		githubUrl: null,
+		highlights: [
+			"Context-based responses using RAG techniques",
+			"Integration with Teams, GitHub, and Outlook APIs",
+			"Reduced manual query handling by 60%",
+			"Prompt engineering and task orchestration",
+		],
+	},
+	{
+		title: "Question Answering System using Knowledge Graphs",
+		description:
+			"An NLP model incorporating Knowledge Graphs to answer complex multi-hop questions. Achieved 80.13% accuracy, outperforming BERT on SQuAD and Multi-RC datasets. Published in IEEE Xplore.",
+		techStack: ["Python", "spaCy", "NLTK", "networkX"],
+		githubUrl: "https://github.com/shreyasdvrj/question-answering-knowledge-graph.git",
+		highlights: [
+			"80.13% accuracy on multi-hop questions",
+			"Outperformed BERT on SQuAD and Multi-RC datasets",
+			"Published research paper in IEEE Xplore",
+			"Entity pair extraction and POS tagging",
+		],
+	},
+	{
+		title: "BioInsight - Biomanufacturing Analytics Platform",
+		description:
+			"End-to-end analytics platform for BTEC to analyze biolector data from 1mL and 30L scale experiments. Built ML pipelines for KPI prediction and time series forecasting.",
+		techStack: ["Python", "Scikit-Learn", "TensorFlow", "Matplotlib", "Streamlit"],
+		githubUrl: null,
+		highlights: [
+			"ML pipelines for KPI prediction and forecasting",
+			"LSTM for time series forecasting",
+			"Isolation Forest for outlier detection",
+			"Interactive Streamlit visualizations",
+		],
+	},
+	{
+		title: "Emotional Virtual Assistant (EVA)",
+		description:
+			"A sophisticated chatbot designed to provide mental health support and answer COVID-19 related FAQs. Built using advanced NLP techniques to understand user emotions and provide appropriate responses.",
+		techStack: ["Python", "RASA", "NLP"],
+		githubUrl: "https://github.com/sumukhbhat2701/EVA.git",
+		highlights: [
+			"Emotion detection and response generation",
+			"COVID-19 FAQ integration",
+			"Mental health support capabilities",
+		],
+	},
+	{
+		title: "StoryHouse - E-commerce Platform",
+		description:
+			"A comprehensive e-commerce website for books built using the MERN stack, featuring modern UI components developed with StencilJS for enhanced user experience.",
+		techStack: ["MongoDB", "Express.js", "React", "Node.js", "StencilJS"],
+		githubUrl: "https://github.com/shreyasdvrj/internship-ecommerce.git",
+		highlights: [
+			"Full-stack MERN implementation",
+			"StencilJS component integration",
+			"Modern e-commerce features",
+			"Responsive design",
+		],
+	},
+];
+---
+
+<PageLayout meta={meta}>
+	<h1 class="title mb-6">Projects</h1>
+	<p class="mb-8 text-gray-600 dark:text-gray-400">
+		Here are some of my key projects that demonstrate my expertise in AI/ML, Software Engineering,
+		and Full-Stack Development.
+	</p>
+
+	<div class="space-y-8">
+		{
+			projects.map((project) => (
+				<div class="rounded-lg border border-gray-200 p-6 transition-shadow hover:shadow-lg dark:border-gray-700">
+					<div class="mb-4 flex items-start justify-between">
+						<h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">{project.title}</h2>
+						{project.githubUrl && (
+							<a
+								href={project.githubUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+								aria-label={`View ${project.title} on GitHub`}
+							>
+								<Icon name="mdi:github" class="h-6 w-6" />
+							</a>
+						)}
+					</div>
+
+					<p class="mb-4 text-gray-700 dark:text-gray-300">{project.description}</p>
+
+					<div class="mb-4">
+						<h3 class="mb-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+							Key Highlights:
+						</h3>
+						<ul class="list-inside list-disc space-y-1 text-sm text-gray-600 dark:text-gray-400">
+							{project.highlights.map((highlight) => (
+								<li>{highlight}</li>
+							))}
+						</ul>
+					</div>
+
+					<div>
+						<h3 class="mb-2 text-sm font-medium text-gray-900 dark:text-gray-100">Tech Stack:</h3>
+						<div class="flex flex-wrap gap-2">
+							{project.techStack.map((tech) => (
+								<span class="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+									{tech}
+								</span>
+							))}
+						</div>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</PageLayout>
+
